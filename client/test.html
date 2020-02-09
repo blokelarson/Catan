@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Catan</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="lobby">
+      <h1 id="lobbyText"></h1>
+    </div>
+
+    <div class="popup large-border"></div>
+
+
+    <div id="content-container">
+      <div id="left-sidebar-container" class="large-border">
+        <div id="player-1" class="player-info-container medium-border">
+          <div class="basic-info">
+            <div class="basic-info-player-number medium-border">1</div>
+            <div class="basic-info-player-name small-border"></div>
+          </div>
+          <div class="big-info">
+            <div class="victory-points medium-border" id="player1-victory-points">Victory Points: 0</div>
+          </div>
+        </div>
+        <div id="player-2" class="player-info-container medium-border">
+          <div class="basic-info">
+            <div class="basic-info-player-number medium-border">2</div>
+            <div class="basic-info-player-name small-border"></div>
+          </div>
+          <div class="big-info">
+            <div class="victory-points medium-border" id="player2-victory-points">Victory Points: 0</div>
+          </div>
+        </div>
+        <div id="player-3" class="player-info-container medium-border">
+          <div class="basic-info">
+            <div class="basic-info-player-number medium-border">3</div>
+            <div class="basic-info-player-name small-border"></div>
+          </div>
+          <div class="big-info">
+            <div class="victory-points medium-border" id="player3-victory-points">Victory Points: 0</div>
+          </div>
+        </div>
+        <div id="player-4" class="player-info-container medium-border">
+          <div class="basic-info">
+            <div class="basic-info-player-number medium-border">4</div>
+            <div class="basic-info-player-name small-border"></div>
+          </div>
+          <div class="big-info">
+            <div class="victory-points medium-border" id="player4-victory-points">Victory Points: 0</div>
+          </div>
+        </div>
+      </div>
+      <div id="board-canvas-container">
+        <canvas id="constant-canvas"></canvas>
+        <canvas id="variable-canvas"></canvas>
+      </div>
+      <div id="right-sidebar-container" class="large-border">
+        <div id="chat-box" class="large-border"></div>
+        <div id="action-container">
+          <div class="action-button" id="spend-button">Build</div>
+          <div class="action-button" id="use-button">Use</div>
+          <div class="action-button" id="trade-button">Trade</div>
+          <div id="build-interface" class="action-data">
+            <div id="icon-container">
+              <div id="icon-text-container" class="small-border">Available Resources</div>
+              <div class="icon small-border" id="brick-container">
+                <div class="resource-value small-border">0</div>
+                <img class="image" src="brick.png">
+              </div>
+              <div class="icon small-border" id="wood-container">
+                <div class="resource-value small-border">2</div>
+                <img class="image" src="wood2.png">
+              </div>
+              <div class="icon small-border" id="wheat-container">
+                <div class="resource-value small-border">0</div>
+                <img class="image" src="wheat.png">
+              </div>
+              <div class="icon small-border" id="sheep-container">
+                <div class="resource-value small-border">3</div>
+                <img class="image" src="sheep.png">
+              </div>
+              <div class="icon small-border" id="stone-container">
+                <div class="resource-value small-border">1</div>
+                <img class="image" src="stone.png">
+              </div>
+            </div>
+            <div id="spend-button-container" class="medium-border">
+              <div class="medium-border very-unique-container">
+                <div id="road-container" class="building-button medium-border" onclick="check_if_player_can_build_road()">Build<br />Road</div>
+                <div class="icon2 medium-border" id="brick-container2">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="brick.png">
+                </div>
+                <div class="icon2 medium-border" id="wood-container2">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="wood2.png">
+                </div>
+              </div>
+              <div class="medium-border very-unique-container">
+                <div id="settlement-container" class="building-button medium-border" onclick="check_if_player_can_build_settlement()">Build Settlement</div>
+                <div class="icon3 medium-border" id="brick-container3">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="brick.png">
+                </div>
+                <div class="icon3 medium-border" id="wood-container3">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="wood2.png">
+                </div>
+                <div class="icon3 medium-border" id="wheat-container3">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="wheat.png">
+                </div>
+                <div class="icon3 medium-border" id="sheep-container3">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="sheep.png">
+                </div>
+              </div>
+              <div class="medium-border very-unique-container">
+                <div id="city-container" class="building-button medium-border" onclick="check_if_player_can_build_city()">Build<br />City</div>
+                <div class="icon2 medium-border" id="wheat-container4">
+                  <div class="resource-value2 small-border">2</div>
+                  <img class="image" src="wheat.png">
+                </div>
+                <div class="icon2 medium-border" id="stone-container4">
+                  <div class="resource-value2 small-border">3</div>
+                  <img class="image" src="stone.png">
+                </div>
+
+              </div>
+              <div class="medium-border very-unique-container">
+                <div id="card-container" class="building-button medium-border">Buy<br />Card</div>
+                <div class="icon4 medium-border" id="wheat-container5">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="wheat.png">
+                </div>
+                <div class="icon4 medium-border" id="sheep-container5">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="sheep.png">
+                </div>
+                <div class="icon4 medium-border" id="stone-container5">
+                  <div class="resource-value2 small-border">1</div>
+                  <img class="image" src="stone.png">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div id="use-interface" class="action-data"></div>
+          <div id="trade-interface" class="action-data"></div>
+
+        </div>
+
+      </div>
+      <svg id="left-sidebar-button" onclick="handle_left_sidebar_button_click()">
+        <circle id="left-sidebar-button-drawing" fill="#6F4E37" />
+      </svg>
+      <svg id="right-sidebar-button" onclick="handle_right_sidebar_button_click()">
+        <circle id="right-sidebar-button-drawing" fill="#6F4E37" />
+      </svg>
+      <div id="card-count-container" class="large-border">
+        <div class="icon-bottom large-border" id="brick-container-bottom">
+          <div class="resource-value-bottom small-border">0</div>
+          <img class="image" src="brick.png">
+        </div>
+        <div class="icon-bottom large-border" id="wood-container-bottom">
+          <div class="resource-value-bottom small-border">0</div>
+          <img class="image" src="wood2.png">
+        </div>
+        <div class="icon-bottom large-border" id="wheat-container-bottom">
+          <div class="resource-value-bottom small-border">0</div>
+          <img class="image" src="wheat.png">
+        </div>
+        <div class="icon-bottom large-border" id="sheep-container-bottom">
+          <div class="resource-value-bottom small-border">0</div>
+          <img class="image" src="sheep.png">
+        </div>
+        <div class="icon-bottom large-border" id="stone-container-bottom">
+          <div class="resource-value-bottom small-border">0</div>
+          <img class="image" src="stone.png">
+        </div>
+      </div>
+      <div id="main-button-container" class="large-border">
+        <div class="action-button-top large-border" id="build-top" onclick="handle_build_click()">Build</div>
+        <div class="action-button-top large-border" id="use-top" onclick="handle_use_click()">Use</div>
+        <div class="action-button-top large-border" id="trade-top" onclick="handle_trade_click()">Trade</div>
+        <div class="icon-top large-border" id="roll-dice-top" onclick="handle_dice_click()">
+          <img class="image2" src="do-roll.png" id="do-roll-image">
+          <img class="image2" src="do-not-roll.png" id="do-not-roll-image">
+        </div>
+        <div class="icon-top large-border" id="end-turn-top" onclick="handle_end_turn_click()">
+          <img class="image2" src="do-next-turn.png" id="do-next-turn-image">
+          <img class="image2" src="do-not-next-turn.png" id="do-not-next-turn-image">
+        </div>
+
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="drawing.js"></script>
+    <script src="gui.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
