@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/strlarson/Catan#readme",
   "dependencies": {
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.5.0"
   }
 }
